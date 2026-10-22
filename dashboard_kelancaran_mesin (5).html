@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Kelancaran Mesin</title>
+<title>PERAWATAN BERKALA</title>
 <style>
 :root{--navy:#14243a;--navy2:#1c3452;--blue:#2878d0;--bg:#f2f5f9;--text:#182638;--muted:#718096;--line:#e4eaf1;--green:#15966a;--yellow:#d99a12;--red:#d94b57;--purple:#7957c8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}
@@ -96,7 +96,7 @@ body{background:linear-gradient(135deg,#f3f6fb 0%,#edf3fb 55%,#f7f9fc 100%);colo
 <aside class="sidebar" id="sidebar">
   <div class="brand"><div class="brand-icon">⚙</div><div><strong>KELANCARAN MESIN</strong><small>Machine Reliability System</small></div></div>
   <div class="nav-label">MENU UTAMA</div>
-  <button class="nav-btn active" data-page="dashboard"><span class="ico">▦</span>Dashboard</button>
+  <button class="nav-btn active" data-page="dashboard"><span class="ico">▦</span>PERAWATAN BERKALA</button>
   <button class="nav-btn" data-page="masalah"><span class="ico">⚠</span>Catat Masalah Mesin</button>
   <button class="nav-btn" data-page="perbaikan"><span class="ico">🔧</span>Perbaikan Mesin</button>
   <button class="nav-btn" data-page="improvement"><span class="ico">✦</span>Pengembangan Kelancaran</button>
@@ -108,12 +108,12 @@ body{background:linear-gradient(135deg,#f3f6fb 0%,#edf3fb 55%,#f7f9fc 100%);colo
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <main class="main">
   <header class="topbar">
-    <div class="top-left"><button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button><div><div class="eyebrow">SISTEM MONITORING MAINTENANCE</div><h1 id="topTitle">Dashboard</h1></div></div>
+    <div class="top-left"><button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button><div><div class="eyebrow">SISTEM MONITORING MAINTENANCE</div><h1 id="topTitle">PERAWATAN BERKALA</h1></div></div>
     <div class="top-right"><span class="clock" id="clock"></span><span class="online"><span class="dot"></span> SISTEM AKTIF</span></div>
   </header>
   <div class="content">
     <section class="page active" id="page-dashboard">
-      <div class="welcome"><div><h2>Dashboard Kelancaran Mesin</h2><p>Pantau masalah, proses perbaikan, dan ide peningkatan keandalan mesin.</p></div><button class="btn btn-primary" onclick="openProblemModal()">＋ Catat Masalah</button></div>
+      <div class="welcome"><div><h2>KELANCARAN MESIN</h2><p>Pantau masalah, proses perbaikan, dan ide peningkatan keandalan mesin.</p></div><button class="btn btn-primary" onclick="openProblemModal()">＋ Catat Masalah</button></div>
       <div class="stats">
         <div class="stat"><div class="stat-icon ic-yellow">⚠</div><div><div class="stat-label">Belum Dikerjakan</div><div class="stat-value" id="statOpen">0</div><div class="stat-note">Masalah belum ditangani</div></div></div>
         <div class="stat"><div class="stat-icon ic-blue">🔧</div><div><div class="stat-label">Sedang Dikerjakan</div><div class="stat-value" id="statProgress">0</div><div class="stat-note">Sedang ditangani teknisi</div></div></div>
@@ -202,7 +202,7 @@ function fmtDate(s){if(!s)return '-';let [y,m,d]=s.split('-');return `${d}/${m}/
 function statusClass(s){return s==='Selesai'?'tag-done':s==='Sedang dikerjakan'?'tag-progress':s==='Urgent'?'tag-urgent':s==='Usulan'||s==='Direncanakan'||s==='Dalam proses'?'tag-idea':'tag-open'}
 function badge(s){return `<span class="tag ${statusClass(s)}">${esc(s||'Belum dikerjakan')}</span>`}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2800)}
-const titles={dashboard:'Dashboard',masalah:'Catat Masalah Mesin',perbaikan:'Perbaikan Mesin',improvement:'Pengembangan Kelancaran',notifikasi:'Notifikasi Mesin',riwayat:'Riwayat Masalah',laporan:'Laporan Bulanan'};
+const titles={dashboard:'PERAWATAN BERKALA',masalah:'Catat Masalah Mesin',perbaikan:'Perbaikan Mesin',improvement:'Pengembangan Kelancaran',notifikasi:'Notifikasi Mesin',riwayat:'Riwayat Masalah',laporan:'Laporan Bulanan'};
 function showPage(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===name));document.getElementById('topTitle').textContent=titles[name]||'Dashboard';document.getElementById('sidebar').classList.remove('open');document.getElementById('mobileOverlay').classList.remove('show');renderAll();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('sidebar').classList.toggle('open');document.getElementById('mobileOverlay').classList.toggle('show')});
